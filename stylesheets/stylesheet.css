@@ -322,6 +322,18 @@ input::-moz-focus-inner {
 input {
   line-height: normal;
 }
+#bookmarklet {
+  border: 1px #000 solid;
+  /* font-size: larger; */
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 1px #0000005c;
+}
+#bookmarklet-text{
+  color:#fff;
+  float:left;
+  font-size: larger;
+  margin-bottom: 10px;
+}
 
 /**
  * It's recommended that you don't attempt to style these elements.
@@ -811,7 +823,10 @@ footer a:hover {
     width: 93%;
   }
   header {
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-right: 0px;
+    padding-bottom: 40px;
+    padding-left: 0px;
   }
   header .inner {
     position: relative;
