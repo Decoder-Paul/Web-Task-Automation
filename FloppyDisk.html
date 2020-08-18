@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        div.ui-datepicker {
+            font-size: 10px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#from_date").datepicker();
+            $("#from_date").datepicker("option", "dateFormat", "DD, d MM, yy");
+
+            $("#to_date").datepicker();
+            $("#to_date").datepicker("option", "dateFormat", "DD, d MM, yy");
+        });
+    </script>
+</head>
+
+<body>
+
+
+
+    <div id="formfiller">
+        <section style="position:fixed;top:20%;left:0;right:0;z-index:9999;width:40%;margin:0 auto;padding:40px;background-color:#fff;font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif">
+            <h1 style="margin:0 0 18px;font-size:32px">Apply Manual Punch</h1>
+            <p>From Date: <input type="text" id="from_date"> To Date: <input type="text" id="to_date"></p>
+            <div id="formfiller-formwrapper">
+                <input type="checkbox" id="formfiller-autosubmit" value="true"> Submit form after filling
+                <br /><br />
+                <input id="wfh_reason" style="margin-bottom:18px" value="Work from home">
+                <input type="button" value="Submit" onclick="javascript:formfiller.save();return false;">
+            </div>
+            <p style="margin:0;display:none">
+                Click and drag this link to the bookmarks bar: <a id="bookmarklet">My bookmarklet</a>
+            </p>
+            <a href="javascript:$(\'#formfiller\').remove();void(0);"
+                style=position:absolute;top:0;right:0;font-size:32px;padding:10px;line-height:.55;color:#aaa;text-decoration:none>&times;</a>
+        </section>
+        <div style=position:fixed;top:0;right:0;bottom:0;left:0;z-index:9998;background-color:rgba(0,0,0,.25)></div>
+    </div>
+</body>
+
+</html>
