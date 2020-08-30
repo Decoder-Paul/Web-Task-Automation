@@ -1,5 +1,8 @@
 const puppeteer = require('puppeteer');
+const cred = require('./config.json');
+
 (async () => {
+try{
 	const browser = await puppeteer.launch({ headless: false, slowMo: 30, defaultViewport: null});
 	const page = await browser.newPage();
 	await page.goto('https://visa.vfsglobal.com/ind/en/deu/login');
@@ -8,14 +11,14 @@ const puppeteer = require('puppeteer');
   //login
   await page.waitForSelector('.login > #login-form #Email')
   const email = await page.$('.login > #login-form #Email')
-  await email.type('************@gmail.com')
+  await email.type(cred.username)
 	//Removing cookie box
 	await page.waitForSelector('.default-device > .optanon-alert-box-wrapper > .optanon-alert-box-bottom-top > .optanon-alert-box-corner-close > .optanon-alert-box-close')
   await page.click('.default-device > .optanon-alert-box-wrapper > .optanon-alert-box-bottom-top > .optanon-alert-box-corner-close > .optanon-alert-box-close')
   //password
 	await page.waitForSelector('#login-form #Password')
   const pass = await page.$('#login-form #Password')
-	await pass.type('*******')
+	await pass.type(cred.password)
 	
 	const [response] = await Promise.all([
 		page.waitForNavigation(),
@@ -102,5 +105,11 @@ const puppeteer = require('puppeteer');
 		timeout: 0
 	});
 	let grp = "Test Notification"
-  // await browser.close()
+}
+catch(e){
+	throw console.error(e)
+}
+finally{
+	await browser.close()
+}
 })();

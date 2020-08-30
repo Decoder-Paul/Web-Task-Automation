@@ -100,20 +100,21 @@ puppeteer.launch ({
   })
   .then (async browser =>{
     try{
+      const cred = require('./config.json')
       const page = await browser.newPage ();
       await page.setViewport ({width: 1200, height: 800});
       await page.goto('https://visa.vfsglobal.com/ind/en/deu/login');
       //email
       await page.waitForSelector('.login > #login-form #Email')
       const email = await page.$('.login > #login-form #Email')
-      await email.type('************@gmail.com')
+      await email.type(cred.username)
       //Accepting cookie
       // await page.waitForSelector('.default-device > .optanon-alert-box-wrapper > .optanon-alert-box-bottom-top > .optanon-alert-box-corner-close > .optanon-alert-box-close')
       // await page.click('.default-device > .optanon-alert-box-wrapper > .optanon-alert-box-bottom-top > .optanon-alert-box-corner-close > .optanon-alert-box-close')
       //password
       await page.waitForSelector('#login-form #Password')
       const pass = await page.$('#login-form #Password')
-      await pass.type('*********')
+      await pass.type(cred.password)
       
       const [response] = await Promise.all([
         page.waitForNavigation(),
