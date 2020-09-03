@@ -2,17 +2,17 @@
   "name": "visa-appointment-checker",
   "version": "1.0.0",
   "description": "It will poll the visa website every minute & check if the Master Student visa appointment is available",
-  "main": "src/VISA_Lookup.js",
+  "main": "src/Repeat_Job.js",
   "scripts": {
     "app": "node .",
     "build": "pkg ."
   },
-  "bin": "src/VISA_Lookup.js",
+  "bin": "src/Repeat_Job.js",
   "pkg": {
     "scripts": "src/**/*.js",
     "assets": "src/config.json",
     "targets": [
-      "node12-win-x64"
+      "node10-win"
     ]
   },
   "keywords": [
